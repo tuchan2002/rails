@@ -1,0 +1,13 @@
+<h3 class="card-title my-4">Welcome to my Blog!</h3>
+
+<div class="row">
+  <% @posts.each do |post| %>
+  <div class="col-4 card">
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title%></h5>
+      <p class="card-text"><%= truncate(post.content, length: 150)%></p>
+      <%= link_to 'Read more', post_path(post) %>
+    </div>
+  </div>
+  <%end%>
+</div>

@@ -1,0 +1,30 @@
+<h1>Todolist</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Completed</th>
+      <th scope="col">Action</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lists.each do |list| %>
+      <tr>
+        <td class="fs-5 <%= list.completed ? "text-decoration-line-through" : "" %>"><%=list.description%></td>
+        <td class="fw-bold <%=list.completed ? 'text-success' : 'text-danger'%>"><%=list.completed%></td>
+        <td>
+          <%if list.completed %>
+            <%= render "lists/uncompleted_button", list: list%>
+          <%else %>
+            <%= render "lists/completed_button", list: list %>
+          <% end %>
+        </td>
+        <td><%= link_to "Show", list %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= button_to "+ New Todo", new_list_path, method: :get, class: "btn btn-primary" %>

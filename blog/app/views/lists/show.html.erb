@@ -1,0 +1,8 @@
+<%= render @list %>
+
+<div>
+  <%= link_to "Edit", edit_list_path(@list) %> |
+  <%= link_to "Back to lists", lists_path %>
+
+  <%= button_to "Destroy", @list, method: :delete, class: "mt-4 btn btn-danger" %>
+</div>

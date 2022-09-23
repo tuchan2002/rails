@@ -1,0 +1,5 @@
+<%= form_with(model: list) do |form| %>
+  <%= form.check_box :completed, checked: true, class: "visually-hidden"%>
+
+  <%= form.submit "Completed", class: "btn btn-outline-primary" %>
+<% end %>
