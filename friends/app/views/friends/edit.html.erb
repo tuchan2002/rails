@@ -1,0 +1,10 @@
+<h1>Editing friend</h1>
+
+<%= render "form", friend: @friend %>
+
+<br>
+
+<div class="d-flex">
+  <%= button_to "Show", @friend, method: :get, class: "btn btn-info" %>
+  <%= button_to "Back", friends_path , method: :get, class: "btn btn-dark mx-3"%>
+</div>
