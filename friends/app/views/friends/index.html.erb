@@ -1,30 +1,32 @@
 <h1>Friend List</h1>
 
-<%= button_to "+ New Friend", new_friend_path, method: :get, class: "btn btn-primary mb-3" %>
-
 <table class="table table-bordered table-hover">
   <thead class="table-dark">
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
+      <th scope="col">User Id</th>
       <th scope="col" colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @friends.each do |friend| %>
-      <tr>
-        <td><%=friend.name%></td>
-        <td><%=friend.email%></td>
-        <td>
-          <%= button_to "Show", friend, method: :get, class: "btn btn-info" %>
-        </td>
-        <td>
-          <%= button_to "Edit", edit_friend_path(friend) , method: :get, class: "btn btn-warning"%>
-        </td>
-        <td>
-          <%= button_to "Destroy", friend, method: :delete, class: "btn btn-danger" %>
-        </td>
-      </tr>
+      <% if friend.user == current_user%>
+        <tr>
+          <td><%=friend.name%></td>
+          <td><%=friend.email%></td>
+          <td><%=friend.user_id%></td>
+          <td>
+            <%= button_to "Show", friend, method: :get, class: "btn btn-info" %>
+          </td>
+          <td>
+            <%= button_to "Edit", edit_friend_path(friend) , method: :get, class: "btn btn-warning"%>
+          </td>
+          <td>
+            <%= button_to "Destroy", friend, method: :delete, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <%end%>
     <% end %>
   </tbody>
 </table>

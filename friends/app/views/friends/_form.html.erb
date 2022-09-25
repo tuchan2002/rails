@@ -19,6 +19,10 @@
     <%= form.text_field :email, class: "form-control", placeholder: "Email..."  %>
   </div>
 
+  <div class="mb-3">
+    <%= form.number_field :user_id, id: :friend_user_id, class: "form-control", placeholder: "User Id...", value: current_user.id, type: :hidden  %>
+  </div>
+
   <div class="mt-4">
     <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
