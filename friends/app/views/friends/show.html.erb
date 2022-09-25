@@ -1,6 +1,9 @@
-<%= render @friend %>
-
-<div class="d-flex">
-  <%= button_to "Edit", edit_friend_path(@friend) , method: :get, class: "btn btn-warning"%>
-  <%= button_to "Back", friends_path , method: :get, class: "btn btn-dark mx-3"%>
+<div class="card mb-3">
+  <div class="card-body">
+    <%= render @friend %>
+    <div class="d-flex">
+      <%= button_to "Edit", edit_friend_path(@friend) , method: :get, class: "btn btn-warning"%>
+      <%= button_to "Back", friends_path , method: :get, class: "btn btn-dark mx-3"%>
+    </div>
+  </div>
 </div>
