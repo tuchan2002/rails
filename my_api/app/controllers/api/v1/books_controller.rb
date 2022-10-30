@@ -3,10 +3,10 @@ module Api
     class BooksController < ApplicationController
       include ActionController::HttpAuthentication::Token
 
-      MAX_PAGINATION_LIMIT = 1
+      MAX_PAGINATION_LIMIT = 100
 
       before_action :set_book, only: [:update, :destroy]
-      before_action :authenticate_user, only: [:index, :create, :destroy]
+      # before_action :authenticate_user, only: [:create, :destroy]
 
       def index
         @books = Book.limit(limit).offset(params[:offset])

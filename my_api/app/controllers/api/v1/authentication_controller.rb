@@ -8,6 +8,7 @@ module Api
       rescue_from AuthenticationError, with: :handle_unauthenticated
 
       def create 
+        # xu ly ngoai le 
         raise AuthenticationError unless user.authenticate(params.require(:password))
         token = AuthenticationTokenService.encode(user.id)
 
