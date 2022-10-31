@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Books API', type: :request do
+  let!(:user) { FactoryBot.create(:user, username: 'TuChan', password: '123456') }
   let(:first_author) { FactoryBot.create(:author, first_name: 'Nguyen', last_name: 'A', age: 20) }
   let(:second_author) { FactoryBot.create(:author, first_name: 'Nguyen', last_name: 'B', age: 20) }
 
@@ -76,7 +77,7 @@ RSpec.describe 'Books API', type: :request do
         post '/api/v1/books', params: {
           book: {title: 'title 3'},
           author: {first_name: 'Nguyen', last_name: 'C', age: 20}
-        }
+        }, headers: { "Authorization" => "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.DiPWrOKsx3sPeVClrm_j07XNdSYHgBa3Qctosdxax3w" }
       }.to change { Book.count }.from(0).to(1)
 
       expect(response).to have_http_status(:created)
@@ -97,7 +98,7 @@ RSpec.describe 'Books API', type: :request do
 
     it 'deletes a book' do
       expect {
-        delete "/api/v1/books/#{book.id}"
+        delete "/api/v1/books/#{book.id}", headers: { "Authorization" => "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.DiPWrOKsx3sPeVClrm_j07XNdSYHgBa3Qctosdxax3w" }
       }.to change { Book.count }.from(1).to(0)
 
       expect(response).to have_http_status(:no_content)
