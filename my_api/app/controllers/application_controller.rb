@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::API
-  rescue_from ActiveRecord::RecordNotDestroyed, with: :not_destroyed
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   private
-    def not_destroyed(e)
-      render json: { errors: e.record.errors }, status: :unprocessable_entity
-    end
+
+  def record_not_found error
+    render json: { error: error }, status: :not_found
+  end
 end
